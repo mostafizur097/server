@@ -32,8 +32,7 @@ def clean(value, max_length):
 
 @app.get("/")
 def home():
-    # Serve the user's original HTML file without modifying it.
-    return send_from_directory(BASE_DIR, "web.html")
+    return send_from_directory(BASE_DIR, "index.html")
 
 
 @app.post("/api/submit")
