@@ -3,158 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#000">
-<title>STREAM RED | Free account</title>
+<meta name="theme-color" content="#080808">
+<title>VideoX | Video Streaming</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#aaa;color:#fff;font-family:Arial,Helvetica,sans-serif}.page{width:min(100%,632px);min-height:100vh;margin:auto;background:#000;padding:28px}.top{display:flex;justify-content:space-between;margin-bottom:22px}.logo{font-size:21px;font-weight:800}.logo span{color:#ed3215}h1{font-size:40px;margin:8px 0}.subtitle{font-size:27px;margin:0 0 42px}label{display:block;font-size:18px;font-weight:700;margin-bottom:16px}.input{position:relative;margin-bottom:32px}.field{width:100%;height:60px;background:#fff;color:#111;border:1px solid #aaa;border-radius:0;padding:0 16px;font-size:18px}.eye{position:absolute;right:7px;top:5px;width:46px;height:50px;background:none;border:0;color:#777;font-size:23px;cursor:pointer}.remember{display:flex;align-items:center;gap:10px;font-size:19px;margin:8px 0 28px}.remember input{width:19px;height:19px;accent-color:#c21f00}.btn{width:100%;height:75px;border:0;border-radius:40px;background:#b51d00;color:white;font-size:24px;font-weight:700;cursor:pointer}.btn:disabled{opacity:.6;cursor:not-allowed}.link{display:inline-block;color:#eee;text-decoration:none;font-size:24px;margin:34px 0 24px;cursor:pointer}.sep{display:flex;align-items:center;gap:14px;color:#eee;font-size:23px;margin:8px 4px 42px}.sep:before,.sep:after{content:"";height:1px;background:linear-gradient(90deg,transparent,#aaa);flex:1}.sep:after{background:linear-gradient(90deg,#aaa,transparent)}.outline{height:75px;border:3px solid #d92305;border-radius:40px;background:#000;color:#fff;font-size:24px;font-weight:700;width:100%;cursor:pointer}.social{display:flex;justify-content:center;gap:64px;margin:0 0 32px}.social button{background:none;border:0;color:#fff;font-size:52px;font-weight:bold;cursor:pointer}.social svg{width:58px;height:58px}.msg{min-height:20px;color:#ff6247;font-size:15px;margin:12px 0;line-height:1.5}.msg.success{color:#62d98a}.panel[hidden]{display:none}.warning{color:#d93419;font-size:21px;font-weight:700;line-height:1.55;margin:34px 8px 18px}.captcha{background:#171717;border:1px solid #333;border-radius:7px;min-height:96px;display:flex;align-items:center;gap:20px;padding:18px 25px;margin:26px 0;cursor:pointer}.captcha input{width:24px;height:24px;accent-color:#b51d00}.premium{margin:0 -28px;background:linear-gradient(115deg,rgba(0,0,0,.96),rgba(0,0,0,.78) 35%,rgba(117,0,0,.72)),radial-gradient(ellipse at 78% 40%,#b51b1b,#4c0808 42%,#050505 75%);padding:16px 28px 36px}.premium h2{text-align:right;font-size:52px;margin:0 0 10px}.tag{text-align:center;font-size:32px;margin:0 0 38px}.tag b{background:#e02a12;padding:1px 8px}.features{display:grid;grid-template-columns:1fr 1fr;gap:32px 20px}.feature{height:164px;border:3px solid white;border-radius:19px;background:#0006;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 8px;font-size:22px;font-weight:700}.feature svg{width:66px;height:66px;stroke:white;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}.noads{width:76px;height:76px;border:2px solid white;border-radius:50%;display:grid;place-items:center;margin-bottom:8px;font-size:17px;line-height:1;font-style:italic}.premium .btn{margin:52px auto 0}.legal{text-align:center;color:#888;font-size:12px;margin-top:22px}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}.modal[hidden]{display:none}.modalbox{width:min(100%,430px);background:#171717;border:1px solid #555;border-radius:14px;padding:24px}.modalbox h2{margin-top:0}.modalbox p{line-height:1.5;color:#ddd}.modalbox .field{margin:10px 0 18px}.modal-actions{display:flex;gap:10px}.modal-actions button{height:48px;font-size:16px}.secondary{background:#333;color:white;border:1px solid #777;border-radius:30px;flex:1;cursor:pointer}.modal-actions .btn{flex:1}.small{font-size:13px;color:#999;line-height:1.5}@media(max-width:480px){.premium h2{font-size:clamp(34px,8vw,52px)}.tag{font-size:clamp(20px,5vw,32px)}.feature{font-size:18px}.features{gap:32px 18px}.premium .btn{font-size:19px}.page{padding:22px}}
+:root{--red:#e52b20;--bg:#090909;--panel:#151515;--muted:#aaa;--line:#303030}
+*{box-sizing:border-box}body{margin:0;background:#080808;color:#fff;font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit}.shell{width:min(100%,760px);min-height:100vh;margin:auto;background:#0d0d0d;padding:26px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:42px}.brand{font-size:24px;font-weight:900;letter-spacing:.5px}.brand span{color:var(--red)}.pill{border:1px solid #444;border-radius:20px;padding:8px 13px;color:#ddd;font-size:12px}
+h1{font-size:clamp(30px,7vw,44px);margin:0 0 8px}.sub{color:#bbb;font-size:17px;margin:0 0 28px}
+.tabs{display:flex;gap:8px;margin:0 0 24px}.tab{flex:1;padding:13px;border:1px solid #444;border-radius:9px;background:#171717;color:#ddd;cursor:pointer}.tab.active{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}.panel[hidden]{display:none}
+label{display:block;font-size:14px;font-weight:700;margin:16px 0 8px}.field{width:100%;height:52px;padding:0 14px;background:#fff;color:#111;border:1px solid #bbb;border-radius:8px;outline:none}.field:focus{border:2px solid var(--red)}
+.btn{width:100%;height:54px;margin-top:22px;border:0;border-radius:28px;background:var(--red);color:white;font-weight:700;cursor:pointer}.btn:disabled{opacity:.55;cursor:wait}
+.note{color:#aaa;font-size:12px;line-height:1.55;margin-top:16px}.status{min-height:22px;margin-top:13px;color:#ff8177;font-size:14px}.status.ok{color:#75df9b}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}.tile{min-height:130px;border-radius:12px;padding:18px;background:linear-gradient(145deg,#292929,#151515);border:1px solid #383838}.tile strong{display:block;margin:12px 0 5px}.tile small{color:#aaa}.symbol{font-size:27px;color:#ff5549}
+footer{text-align:center;color:#777;font-size:12px;margin:28px 0 8px}
+@media(min-width:600px){.shell{padding:38px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:380px){.shell{padding:18px}.panel{padding:16px}}
 </style>
 </head>
 <body>
-<main class="page">
-<div class="top"><div class="logo">STREAM <span>RED</span></div><div>EN</div></div>
+<main class="shell">
+<header><div class="brand">VIDEO<span>X</span></div><div class="pill">VIDEO STREAMING</div></header>
 
-<section id="login" class="panel">
-<h1>Free account</h1><p class="subtitle">Account login:</p>
+<section>
+<h1>Welcome to VideoX</h1>
+<p class="sub">Sign in or create an account to continue.</p>
+<div class="tabs" role="tablist" aria-label="Account options">
+<button class="tab active" id="loginTab" type="button">Sign in</button>
+<button class="tab" id="signupTab" type="button">Create account</button>
+</div>
+
+<div class="panel" id="loginPanel">
 <form id="loginForm">
-<label for="email">Your login (email):</label><div class="input"><input class="field" id="email" type="email" autocomplete="email" required></div>
-<label for="password">Password:</label><div class="input"><input class="field" id="password" type="password" required autocomplete="current-password"><button class="eye" type="button" data-eye="password" aria-label="Show password">◉</button></div>
-<label class="remember"><input type="checkbox" id="remember"> Remember me on this device</label>
-<button class="btn" id="loginBtn" type="submit">Sign in</button><div class="msg" id="loginMsg" aria-live="polite"></div>
+<label for="loginEmail">Email address</label>
+<input class="field" id="loginEmail" type="email" autocomplete="email" required maxlength="254">
+<label for="loginPassword">Password</label>
+<input class="field" id="loginPassword" type="password" autocomplete="current-password" required maxlength="128">
+<button class="btn" id="loginButton" type="submit">Sign in</button>
+<div class="status" id="loginStatus" aria-live="polite"></div>
 </form>
-<a class="link" id="forgot">Forgot your password?</a><div class="sep">OR</div>
-<button class="outline" id="toSignup" type="button">Create a free account</button>
-<div class="sep" style="margin-top:64px">OR LOGIN WITH</div>
-<div class="social">
-<button id="google" aria-label="Google demo login" title="Google demo login"><svg viewBox="0 0 48 48"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.8 6.1-15Z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3A20 20 0 0 0 24 44Z"/><path fill="#FBBC05" d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.8a20 20 0 0 0 0 17.8l6.8-5.3Z"/><path fill="#EA4335" d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6 29.5 4 24 4A20 20 0 0 0 5.8 15.1l6.8 5.3C14.2 15.6 18.7 12 24 12Z"/></svg></button>
-<button id="xlogin" aria-label="X demo login">𝕏</button>
+<p class="note">Your password is sent only to this site's authentication endpoint over the current connection. Use HTTPS before deploying publicly.</p>
 </div>
-</section>
 
-<section id="signup" class="panel" hidden>
-<h1>Free account</h1><p class="subtitle">Create your account:</p>
+<div class="panel" id="signupPanel" hidden>
 <form id="signupForm">
-<label for="newEmail">Email:</label><div class="input"><input class="field" id="newEmail" type="email" autocomplete="email" required></div>
-<label for="newPassword">Password:</label><div class="input"><input class="field" id="newPassword" type="password" minlength="8" autocomplete="new-password" required><button class="eye" type="button" data-eye="newPassword" aria-label="Show password">◉</button></div>
-<label class="remember"><input type="checkbox" id="agree" required> I agree to the Terms and Privacy Policy</label>
-<button class="btn" type="submit">Create account</button><div class="msg" id="signupMsg" aria-live="polite"></div>
-</form><a class="link" id="back">Back to login</a>
-</section>
-
-<section id="reset" class="panel" hidden>
-<h1>Free account</h1><p class="subtitle">Reset your account password:</p>
-<p class="warning">This local demo changes the password stored in this browser. It does not send an email.</p>
-<form id="resetForm">
-<label for="resetEmail">Email:</label><div class="input"><input class="field" id="resetEmail" type="email" required></div>
-<label for="resetNewPassword">New password:</label><div class="input"><input class="field" id="resetNewPassword" type="password" minlength="8" required><button class="eye" type="button" data-eye="resetNewPassword">◉</button></div>
-<label class="captcha"><input id="human" type="checkbox" required><b>I am human</b></label>
-<button class="btn" type="submit">Reset my password</button><div class="msg" id="resetMsg" aria-live="polite"></div>
-</form><a class="link" id="resetBack">Back to login</a>
-</section>
-
-<section id="account" class="panel" hidden>
-<h1>Free account</h1><p class="subtitle">You are signed in.</p>
-<p id="userEmail"></p><p id="accountType" class="small"></p>
-<button class="btn" id="logout" type="button">Sign out</button>
-<div class="msg success" id="accountMsg"></div>
-</section>
-
-<section class="premium">
-<h2>Premium signup</h2><p class="tag">Become a privileged <b>RED</b> member</p>
-<div class="features">
-<div class="feature"><div class="noads">NO<br>ADS</div>No Ads</div>
-<div class="feature"><svg viewBox="0 0 64 64"><path d="M32 5 40 23 59 24 44 37 49 57 32 46 15 57 20 37 5 24 24 23Z"/></svg>Exclusive Content</div>
-<div class="feature"><svg viewBox="0 0 64 64"><rect x="5" y="10" width="54" height="44" rx="4"/><path d="M5 23h54M18 10l-6 13M34 10l-6 13M50 10l-6 13"/><path d="m28 32 12 7-12 7Z"/></svg>High def videos</div>
-<div class="feature"><svg viewBox="0 0 64 64"><path d="M53 22A23 23 0 0 0 13 17l-5 7M8 12v12h12M11 42a23 23 0 0 0 40 5l5-7m0 12V40H44"/></svg>+1,700 New videos / day</div>
+<label for="signupEmail">Email address</label>
+<input class="field" id="signupEmail" type="email" autocomplete="email" required maxlength="254">
+<label for="signupPassword">Create password</label>
+<input class="field" id="signupPassword" type="password" autocomplete="new-password" minlength="8" required maxlength="128">
+<label for="confirmPassword">Confirm password</label>
+<input class="field" id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required maxlength="128">
+<button class="btn" id="signupButton" type="submit">Create account</button>
+<div class="status" id="signupStatus" aria-live="polite"></div>
+</form>
+<p class="note">Use a unique password. VideoX does not send passwords, verification codes, or session tokens to Telegram.</p>
 </div>
-<button class="btn" id="premium" type="button">Become a premium member</button>
 </section>
-<p class="legal">Demo mode: account data is stored only in this browser. Do not use real passwords.</p>
+
+<section class="grid" aria-label="Platform features">
+<div class="tile"><div class="symbol">▶</div><strong>Video Library</strong><small>Browse your available videos.</small></div>
+<div class="tile"><div class="symbol">▣</div><strong>HD Playback</strong><small>Enjoy supported video quality.</small></div>
+<div class="tile"><div class="symbol">♡</div><strong>Your Account</strong><small>Manage your profile securely.</small></div>
+</section>
+
+<footer>VideoX Demo Interface · Secure authentication requires the matching backend API.</footer>
 </main>
-
-<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-<div class="modalbox"><h2 id="modalTitle">Notice</h2><p id="modalText"></p>
-<div class="modal-actions"><button class="secondary" id="modalCancel" type="button">Cancel</button><button class="btn" id="modalOk" type="button">OK</button></div></div>
-</div>
 
 <script>
 "use strict";
-const $=id=>document.getElementById(id);
-const DB_KEY="streamRed_demo_users_v1";
-const SESSION_KEY="streamRed_demo_session";
-let modalAction=null;
-
-function readUsers(){try{return JSON.parse(localStorage.getItem(DB_KEY)||"{}")}catch{return {}}}
-function saveUsers(users){localStorage.setItem(DB_KEY,JSON.stringify(users))}
-function show(id){["login","signup","reset","account"].forEach(x=>$(x).hidden=x!==id);clearMessages()}
-function clearMessages(){["loginMsg","signupMsg","resetMsg","accountMsg"].forEach(id=>{if($(id)){$(id).textContent="";$(id).classList.remove("success")}})}
-function message(id,text,success=false){const el=$(id);el.textContent=text;el.classList.toggle("success",success)}
-function emailKey(email){return email.trim().toLowerCase()}
-function validEmail(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)}
-function setSession(email,remember=true){const store=remember?localStorage:sessionStorage;const other=remember?sessionStorage:localStorage;other.removeItem(SESSION_KEY);store.setItem(SESSION_KEY,email)}
-function getSession(){return localStorage.getItem(SESSION_KEY)||sessionStorage.getItem(SESSION_KEY)}
-function openModal(title,text,onOk=null,showCancel=true){$("modalTitle").textContent=title;$("modalText").textContent=text;$("modalCancel").hidden=!showCancel;$("modal").hidden=false;modalAction=onOk}
-function closeModal(){$("modal").hidden=true;modalAction=null}
-function enterAccount(email,type="Email account"){ $("userEmail").textContent=email;$("accountType").textContent=type;show("account")}
-function restoreSession(){const email=getSession();if(!email)return show("login");const user=readUsers()[email];if(user)enterAccount(email,user.provider?user.provider+" demo account":"Email account");else{localStorage.removeItem(SESSION_KEY);sessionStorage.removeItem(SESSION_KEY);show("login")}}
-
-document.querySelectorAll("[data-eye]").forEach(button=>button.addEventListener("click",()=>{const field=$(button.dataset.eye);const reveal=field.type==="password";field.type=reveal?"text":"password";button.textContent=reveal?"◎":"◉";button.setAttribute("aria-label",reveal?"Hide password":"Show password")}));
-
-$("toSignup").addEventListener("click",()=>show("signup"));
-$("back").addEventListener("click",()=>show("login"));
-$("forgot").addEventListener("click",()=>{$("resetEmail").value=$("email").value;show("reset")});
-$("resetBack").addEventListener("click",()=>show("login"));
-
-$("signupForm").addEventListener("submit",event=>{
- event.preventDefault();const email=emailKey($("newEmail").value),password=$("newPassword").value;
- if(!validEmail(email))return message("signupMsg","Please enter a valid email address.");
- if(password.length<8)return message("signupMsg","Password must be at least 8 characters.");
- if(!$("agree").checked)return message("signupMsg","Please accept the Terms and Privacy Policy.");
- const users=readUsers();if(users[email])return message("signupMsg","An account with this email already exists.");
- users[email]={password,createdAt:new Date().toISOString(),provider:""};saveUsers(users);
- $("email").value=email;$("password").value="";$("newPassword").value="";$("agree").checked=false;
- message("signupMsg","Account created successfully. You can now sign in.",true);
-});
-
-$("loginForm").addEventListener("submit",event=>{
- event.preventDefault();const email=emailKey($("email").value),password=$("password").value;
- const user=readUsers()[email];
- if(!user||user.password!==password)return message("loginMsg","Incorrect email or password, or account does not exist.");
- setSession(email,$("remember").checked);$("password").value="";enterAccount(email,user.provider?user.provider+" demo account":"Email account");
-});
-
-$("resetForm").addEventListener("submit",event=>{
- event.preventDefault();const email=emailKey($("resetEmail").value),password=$("resetNewPassword").value;
- if(!validEmail(email))return message("resetMsg","Please enter a valid email address.");
- if(password.length<8)return message("resetMsg","New password must be at least 8 characters.");
- if(!$("human").checked)return message("resetMsg","Please confirm that you are human.");
- const users=readUsers();if(!users[email])return message("resetMsg","No local demo account was found for this email.");
- users[email].password=password;saveUsers(users);$("resetNewPassword").value="";$("human").checked=false;
- message("resetMsg","Password changed successfully. Return to login.",true);
-});
-
-function socialDemo(provider){
- openModal(provider+" demo sign-in","This is a local demonstration, not real "+provider+" authentication. Continue to create a temporary demo account for this browser?",()=>{
-  const email=provider.toLowerCase()+"-demo@streamred.local",users=readUsers();
-  if(!users[email])users[email]={password:null,createdAt:new Date().toISOString(),provider};
-  saveUsers(users);setSession(email,true);enterAccount(email,provider+" demo account");
- });
+const $ = id => document.getElementById(id);
+const loginTab = $("loginTab"), signupTab = $("signupTab");
+function selectTab(which){
+  const login = which === "login";
+  $("loginPanel").hidden = !login;
+  $("signupPanel").hidden = login;
+  loginTab.classList.toggle("active", login);
+  signupTab.classList.toggle("active", !login);
+  loginTab.setAttribute("aria-selected", String(login));
+  signupTab.setAttribute("aria-selected", String(!login));
 }
-$("google").addEventListener("click",()=>socialDemo("Google"));
-$("xlogin").addEventListener("click",()=>socialDemo("X"));
+loginTab.addEventListener("click", () => selectTab("login"));
+signupTab.addEventListener("click", () => selectTab("signup"));
 
-$("logout").addEventListener("click",()=>{
- localStorage.removeItem(SESSION_KEY);sessionStorage.removeItem(SESSION_KEY);$("email").value="";$("password").value="";show("login");message("loginMsg","You have been signed out.",true);
-});
-$("premium").addEventListener("click",()=>{
- const email=getSession();
- openModal("Premium membership","Premium checkout is not connected. No payment will be taken. "+(email?"Signed in as "+email+". ":"")+"Connect a trusted payment provider and a server-side payment verification endpoint before accepting payments.",null,false);
-});
-$("modalCancel").addEventListener("click",closeModal);
-$("modalOk").addEventListener("click",()=>{const action=modalAction;closeModal();if(action)action()});
-$("modal").addEventListener("click",event=>{if(event.target===$("modal"))closeModal()});
-document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!$("modal").hidden)closeModal()});
+async function submitAuth(path, payload, button, status){
+  button.disabled = true;
+  status.className = "status";
+  status.textContent = "Please wait…";
+  try {
+    const response = await fetch(path, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      credentials: "same-origin",
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success !== true) {
+      throw new Error(result.message || `Request failed (${response.status})`);
+    }
+    status.className = "status ok";
+    status.textContent = result.message || "Success.";
+    return result;
+  } catch (error) {
+    status.className = "status";
+    status.textContent = error.message.includes("Failed to fetch")
+      ? "Cannot reach the server. Check that the Flask backend is running and the API route exists."
+      : error.message;
+    return null;
+  } finally {
+    button.disabled = false;
+  }
+}
 
-restoreSession();
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  await submitAuth("/api/v1/auth/login", {
+    email: $("loginEmail").value.trim(),
+    password: $("loginPassword").value
+  }, $("loginButton"), $("loginStatus"));
+});
+
+$("signupForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const password = $("signupPassword").value;
+  if (password !== $("confirmPassword").value) {
+    $("signupStatus").textContent = "Passwords do not match.";
+    return;
+  }
+  const result = await submitAuth("/api/v1/auth/register", {
+    email: $("signupEmail").value.trim(),
+    password
+  }, $("signupButton"), $("signupStatus"));
+  if (result) {
+    $("signupForm").reset();
+    selectTab("login");
+    $("loginEmail").value = $("signupEmail").value.trim();
+    $("loginStatus").className = "status ok";
+    $("loginStatus").textContent = "Account created. You can now sign in.";
+  }
+});
 </script>
 </body>
 </html>
