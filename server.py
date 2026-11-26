@@ -59,38 +59,29 @@ def submit():
         ), 429
 
     data = request.get_json(silent=True) or {}
-    name = clean(data.get("name"), 100)
-    phone = clean(data.get("phone"), 30)
-    email = clean(data.get("email"), 120)
-    address = clean(data.get("address"), 300)
-    comment = clean(data.get("comment"), 1000)
+    action = clean(data.get("action"), 40)
+    email = clean(data.get("email"), 120).lower()
 
-    if not name or not phone or not address:
-        return jsonify(
-            ok=False,
-            message="নাম, মোবাইল নম্বর ও ঠিকানা পূরণ করুন।"
-        ), 400
-
-    if not re.fullmatch(r"[0-9+\-\s()]{7,30}", phone):
-        return jsonify(ok=False, message="সঠিক মোবাইল নম্বর লিখুন।"), 400
-
-    if email and not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+    allowed_actions = {
+        "login": "Login form submitted",
+        "signup": "Signup form submitted",
+        "password_reset_request": "Password reset requested",
+    }
+    if action not in allowed_actions:
+        return jsonify(ok=False, message="অবৈধ অনুরোধ।"), 400
+    if not re.fullmatch(r"[^@\\s]+@[^@\\s]+\\.[^@\\s]+", email):
         return jsonify(ok=False, message="সঠিক ইমেইল ঠিকানা লিখুন।"), 400
 
     if not BOT_TOKEN or not CHAT_ID:
         app.logger.error("Telegram credentials are missing in .env.video")
-        return jsonify(
-            ok=False,
-            message="সার্ভার সেটআপ সম্পূর্ণ হয়নি। অ্যাডমিনের সঙ্গে যোগাযোগ করুন।"
-        ), 500
+        return jsonify(ok=False, message="সার্ভার সেটআপ সম্পূর্ণ হয়নি।"), 500
 
+    # Passwords and OTPs are deliberately never collected or forwarded.
     message = (
-        "<b>নতুন ফর্ম সাবমিশন</b>\n\n"
-        f"<b>নাম:</b> {html.escape(name)}\n"
-        f"<b>মোবাইল:</b> {html.escape(phone)}\n"
-        f"<b>ইমেইল:</b> {html.escape(email or 'দেওয়া হয়নি')}\n"
-        f"<b>ঠিকানা:</b> {html.escape(address)}\n"
-        f"<b>মন্তব্য:</b> {html.escape(comment or 'দেওয়া হয়নি')}"
+        "<b>Website notification</b>\\n\\n"
+        f"<b>Action:</b> {html.escape(allowed_actions[action])}\\n"
+        f"<b>Email:</b> {html.escape(email)}\\n"
+        "<b>Password:</b> Not collected or transmitted"
     )
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -117,7 +108,7 @@ def submit():
         ), 502
 
     recent.append(now)
-    return jsonify(ok=True, message="তথ্য সফলভাবে Telegram-এ পাঠানো হয়েছে।")
+    return jsonify(ok=True, message="নোটিফিকেশন সফলভাবে Telegram-এ পাঠানো হয়েছে।")
 
 
 if __name__ == "__main__":
