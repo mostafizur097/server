@@ -1,0 +1,125 @@
+import os
+import re
+import time
+import html
+from collections import defaultdict, deque
+
+import requests
+from dotenv import load_dotenv
+from flask import Flask, request, jsonify, send_from_directory
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load Telegram credentials from the separate .env.video file.
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env.video"))
+
+app = Flask(__name__, static_folder=None)
+
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+PORT = int(os.getenv("PORT", "5000"))
+
+# In-memory per-IP rate limit: max 5 submissions per 10 minutes.
+# For production/multi-worker hosting, use Redis or a database.
+submissions = defaultdict(deque)
+RATE_LIMIT = 5
+WINDOW_SECONDS = 600
+
+
+def clean(value, max_length):
+    return str(value or "").strip()[:max_length]
+
+
+@app.get("/")
+def home():
+    # Serve the user's original HTML file without modifying it.
+    return send_from_directory(BASE_DIR, "web.html")
+
+
+@app.post("/api/submit")
+def submit():
+    now = time.time()
+
+    # Only trust X-Forwarded-For when running behind a proxy you control.
+    if os.getenv("TRUST_PROXY", "0") == "1":
+        ip = request.headers.get(
+            "X-Forwarded-For", request.remote_addr or "unknown"
+        ).split(",")[0].strip()
+    else:
+        ip = request.remote_addr or "unknown"
+
+    recent = submissions[ip]
+    while recent and now - recent[0] > WINDOW_SECONDS:
+        recent.popleft()
+
+    if len(recent) >= RATE_LIMIT:
+        return jsonify(
+            ok=False,
+            message="অনেকবার চেষ্টা করা হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন।"
+        ), 429
+
+    data = request.get_json(silent=True) or {}
+    name = clean(data.get("name"), 100)
+    phone = clean(data.get("phone"), 30)
+    email = clean(data.get("email"), 120)
+    address = clean(data.get("address"), 300)
+    comment = clean(data.get("comment"), 1000)
+
+    if not name or not phone or not address:
+        return jsonify(
+            ok=False,
+            message="নাম, মোবাইল নম্বর ও ঠিকানা পূরণ করুন।"
+        ), 400
+
+    if not re.fullmatch(r"[0-9+\-\s()]{7,30}", phone):
+        return jsonify(ok=False, message="সঠিক মোবাইল নম্বর লিখুন।"), 400
+
+    if email and not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+        return jsonify(ok=False, message="সঠিক ইমেইল ঠিকানা লিখুন।"), 400
+
+    if not BOT_TOKEN or not CHAT_ID:
+        app.logger.error("Telegram credentials are missing in .env.video")
+        return jsonify(
+            ok=False,
+            message="সার্ভার সেটআপ সম্পূর্ণ হয়নি। অ্যাডমিনের সঙ্গে যোগাযোগ করুন।"
+        ), 500
+
+    message = (
+        "<b>নতুন ফর্ম সাবমিশন</b>\n\n"
+        f"<b>নাম:</b> {html.escape(name)}\n"
+        f"<b>মোবাইল:</b> {html.escape(phone)}\n"
+        f"<b>ইমেইল:</b> {html.escape(email or 'দেওয়া হয়নি')}\n"
+        f"<b>ঠিকানা:</b> {html.escape(address)}\n"
+        f"<b>মন্তব্য:</b> {html.escape(comment or 'দেওয়া হয়নি')}"
+    )
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+    try:
+        response = requests.post(
+            url,
+            json={
+                "chat_id": CHAT_ID,
+                "text": message,
+                "parse_mode": "HTML"
+            },
+            timeout=15
+        )
+        response.raise_for_status()
+        result = response.json()
+        if not result.get("ok"):
+            raise RuntimeError("Telegram API returned an unsuccessful response")
+    except Exception:
+        app.logger.exception("Telegram delivery failed")
+        return jsonify(
+            ok=False,
+            message="Telegram-এ পাঠানো যায়নি। পরে আবার চেষ্টা করুন।"
+        ), 502
+
+    recent.append(now)
+    return jsonify(ok=True, message="তথ্য সফলভাবে Telegram-এ পাঠানো হয়েছে।")
+
+
+if __name__ == "__main__":
+    # Local development only. Use HTTPS + a production WSGI server when hosting.
+    app.run(host="0.0.0.0", port=PORT, debug=False)
