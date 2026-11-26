@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 STREAM RED - Secure Login Event Logger
@@ -211,7 +210,10 @@ def valid_email(email):
 
 @app.get("/")
 def home():
-    return send_from_directory(BASE_DIR, "web.html")
+    return send_from_directory(
+        os.path.dirname(os.path.abspath(__file__)),
+        "index.html"
+    )
 
 
 @app.get("/api/me")
@@ -308,4 +310,3 @@ if __name__ == "__main__":
     init_db()
     # For public hosting use HTTPS + a production WSGI server.
     app.run(host="0.0.0.0", port=PORT, debug=False)
-
